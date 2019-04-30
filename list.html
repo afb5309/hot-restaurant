@@ -18,9 +18,11 @@
       <h3 class="text-center">Current Reservations and Waiting List</h3>
       <hr>
       <div class="container"> 
-      <div class="row mx-auto d-flex justify-content-center mb-3">
-      <a href="/"><button class="mr-1 btn btn-primary btn-lg">View Tables</button></a>
-      <a href="/"><button class="ml-1 btn btn-danger btn-lg">Make Reservation</button></a>
+      <div class="row justify-content-center mb-3">
+      <div class="text-center mr-2">
+        <button type="submit" class="btn btn-danger btn-md" id="add-btn"><span class="fa fa-id-card"></span> Make Reservation</button>
+      </div>
+      <a href="/"><button class="center btn btn-light btn-lg fa fa-home"></span></a>
     </div>
     </div>
     <div class="row">
@@ -40,24 +42,24 @@
               </div>
 
               <div class="form-group">
-                <label for="role">Role</label>
-                <input type="text" class="form-control" id="role">
+                <label for="number">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNum">
               </div>
 
               <div class="form-group">
-                <label for="age">Age</label>
-                <input type="text" class="form-control" id="age">
+                <label for="age">Email</label>
+                <input type="text" class="form-control" id="email">
               </div>
 
               <div class="form-group">
-                <label for="force-points">Force Points</label>
-                <input type="text" class="form-control" id="force-points">
+                <label for="partySize">Party Size</label>
+                <input type="text" class="form-control" id="id">
               </div>
 
             </form>
             <br>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add to the Force</button>
+              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Submit</button>
             </div>
           </div>
         </div>
@@ -67,6 +69,7 @@
   </div>
 
   <script type="text/javascript">
+    
     function display() {
       //var searchedCharacter = $("#character-search").val().trim();
 
@@ -89,7 +92,7 @@
         }
       });
     };
-  display()
+  display();
   </script>
 
 </body>
