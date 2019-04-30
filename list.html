@@ -69,23 +69,30 @@
   </div>
 
   <script type="text/javascript">
-    // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
-      event.preventDefault();
-      var newReservation = {
-        name: $("#name").val().trim(),
-        phoneNum: $("#phoneNum").val().trim(),
-        email: $("#email").val().trim(),
-        id: $("#id").val().trim()
-      };
+    
+    function display() {
+      //var searchedCharacter = $("#character-search").val().trim();
 
-      // Question: What does this code do??
-      $.post("/api/list", newReservation)
-        .then(function(data) {
-          console.log("res.html", data);
-          alert("Adding character...");
-        });
-    });
+      // Using a RegEx Pattern to remove spaces from searchedCharacter
+      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+      //searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
+
+      $.get("/api/list", function(data) {
+        console.log(data);
+        if (data) {
+          $("#stats").show();
+          $("#name").text(data.name);
+          $("#role").text(data.phone);
+          $("#age").text(data.email);
+          $("#force-points").text(data.id);
+        }
+        else {
+          $("#name").text("No Reservations found :(");
+          $("#stats").hide();
+        }
+      });
+    };
+  display();
   </script>
 
 </body>
