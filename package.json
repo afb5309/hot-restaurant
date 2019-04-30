@@ -1,0 +1,27 @@
+{
+  "name": "hot-restaurant",
+  "version": "1.0.0",
+  "description": "The greatest website ever",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afb5309/hot-restaurant.git"
+  },
+  "keywords": [
+    "llamas",
+    "peaches"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afb5309/hot-restaurant/issues"
+  },
+  "homepage": "https://github.com/afb5309/hot-restaurant#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
