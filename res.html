@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Hot Restaurant</title>
@@ -11,7 +10,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
-
 <body>
 
   <div class="container mt-5">
@@ -19,51 +17,83 @@
       <h1 class="text-center">Hot Restaurant</h1>
       <h3 class="text-center">Current Reservations and Waiting List</h3>
       <hr>
-
       <div class="container"> 
       <div class="row justify-content-center mb-3">
       <div class="text-center mr-2">
-        <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-table"></span> View Tables</button>
+        <button type="submit" class="btn btn-danger btn-md" id="add-btn"><span class="fa fa-id-card"></span> Make Reservation</button>
       </div>
       <a href="/"><button class="center btn btn-light btn-lg fa fa-home"></span></a>
     </div>
     </div>
     <div class="row">
 
-        <div class="col-12">
+      <div class="col-12">
 
         <div class="card">
           <div class="card-header">
-            <h3><strong>Current Reservations</strong></h3>
+            <h3><strong>New Reservation</strong></h3>
+          </div>
+          <div class="card-body">
+            <form method="POST" role="form">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+
+              <div class="form-group">
+                <label for="number">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNum">
+              </div>
+
+              <div class="form-group">
+                <label for="age">Email</label>
+                <input type="text" class="form-control" id="email">
+              </div>
+
+              <div class="form-group">
+                <label for="partySize">Party Size</label>
+                <input type="text" class="form-control" id="id">
+              </div>
+
+            </form>
+            <br>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Submit</button>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
+  </div>
 
-    <script type="text/javascript">
-      // Question: What does this code do?
-      $("#add-btn").on("click", function (event) {
-        event.preventDefault();
-        var newReservation = {
-          name: $("#name").val().trim(),
-          phone: $("#phoneNum").val().trim(),
-          email: $("#email").val().trim(),
-          id: $("#id").val().trim()
-        };
+  <script type="text/javascript">
+    
+    function display() {
+      //var searchedCharacter = $("#character-search").val().trim();
 
-        // Question: What does this code do??
-        $.post("/api/list", newReservation)
-          .then(function (data) {
-            console.log("res.html", data);
-            alert("Adding character...");
-          });
+      // Using a RegEx Pattern to remove spaces from searchedCharacter
+      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+      //searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-        function changePage() {
-
+      $.get("/api/list", function(data) {
+        console.log(data);
+        if (data) {
+          $("#stats").show();
+          $("#name").text(data.name);
+          $("#role").text(data.phone);
+          $("#age").text(data.email);
+          $("#force-points").text(data.id);
+        }
+        else {
+          $("#name").text("No Reservations found :(");
+          $("#stats").hide();
         }
       });
-    </script>
+    };
+  display();
+  </script>
 
 </body>
-
 </html>
